@@ -11,6 +11,7 @@ import { View, StyleSheet, Text, ScrollView} from 'react-native';
 import Header from './src/header'
 import Generator from './src/generator'
 import NumList from './src/numlist'
+import Input from './src/input'
 
 
 class App extends Component {
@@ -41,17 +42,18 @@ class App extends Component {
   render() {
     return (
       <View style={styles.mainView}>
-        <Header name={this.state.appName}/>
+        {/* <Header name={this.state.appName}/>
         <View>
           <Text style={styles.mainText} onPress={()=>alert('Text touch event')}>
             Hello world
           </Text>
         </View>
-        <ScrollView>
+        <ScrollView style={{width: '100%'}}>
           <Generator add={this.onAddRandomNum}/>
           <NumList num={this.state.random}
           delete={this.onNumDelete}/>
-        </ScrollView>
+        </ScrollView> */}
+        <Input />
         
 
       </View>
@@ -63,8 +65,8 @@ const styles = StyleSheet.create({
   mainView: {
     backgroundColor: 'white',
     paddingTop: 50, 
-    //alignItems: "center",
-    //justifyContent: "center"
+    alignItems: "center",
+    justifyContent: "center"
   }
 })
 
