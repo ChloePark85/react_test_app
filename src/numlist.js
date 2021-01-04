@@ -6,13 +6,11 @@ const Numlist = (props) => {
         props.num.map((item, idx) => (
             <TouchableOpacity 
             style = {styles.numList} 
-            key={idx}>
-            onPress={()=>props.delete}
+            key={idx}
+            onPress={()=>props.delete(idx)}>
                 <Text>{item}</Text>
             </TouchableOpacity>
         ))
-        
-
     )
     }
 

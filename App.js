@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { View, StyleSheet, Text} from 'react-native';
+import { View, StyleSheet, Text, ScrollView} from 'react-native';
 import Header from './src/header'
 import Generator from './src/generator'
 import NumList from './src/numlist'
@@ -29,8 +29,13 @@ class App extends Component {
     })
   }
 
-  onNumDelete = () => {
-    alert("Delete")
+  onNumDelete = (position) => {
+    const newArray = this.state.random.filter((num, index) => {
+      return position != index;
+    })
+    this.setState({
+      random: newArray
+    })
   }
 
   render() {
@@ -42,9 +47,12 @@ class App extends Component {
             Hello world
           </Text>
         </View>
-        <Generator add={this.onAddRandomNum}/>
-        <NumList num={this.state.random}
-        delete={this.onNumDelete}/>
+        <ScrollView>
+          <Generator add={this.onAddRandomNum}/>
+          <NumList num={this.state.random}
+          delete={this.onNumDelete}/>
+        </ScrollView>
+        
 
       </View>
     )
@@ -55,7 +63,7 @@ const styles = StyleSheet.create({
   mainView: {
     backgroundColor: 'white',
     paddingTop: 50, 
-    alignItems: "center",
+    //alignItems: "center",
     //justifyContent: "center"
   }
 })
