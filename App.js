@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, ScrollView} from 'react-native';
+import { TextInput, Button, View, StyleSheet, Text, ScrollView } from 'react-native';
 import Header from './src/header'
 import Generator from './src/generator'
 import NumList from './src/numlist'
@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   onAddRandomNum = () => {
-    const randomNum = Math.floor(Math.random()*100)+1;
+    const randomNum = Math.floor(Math.random() * 100) + 1;
     this.setState(prevState => {
       return {
         random: [...prevState.random, randomNum]
@@ -39,6 +39,21 @@ class App extends Component {
     })
   }
 
+  state = {
+    myTextInput: '',
+    alphabet: ['a', 'b', 'c', 'd']
+}
+
+onChangeInput = (event) => {
+    this.setState({
+        myTextInput: event
+    })
+}
+
+  onAddTextInput = () => {
+    alert('I want to add a textinput')
+  }
+
   render() {
     return (
       <View style={styles.mainView}>
@@ -53,8 +68,18 @@ class App extends Component {
           <NumList num={this.state.random}
           delete={this.onNumDelete}/>
         </ScrollView> */}
+        <TextInput
+          value={this.state.myTextInput}
+          style={styles.input}
+          onChangeText={this.onChangeInput}
+          multiline={true}
+          maxLength={100}
+          autoCapitalize={'none'}
+          editable={true} />
+        <Button title="Add Text Input"
+          onPress={this.onAddTextInput} />
         <Input />
-        
+
 
       </View>
     )
@@ -64,10 +89,17 @@ class App extends Component {
 const styles = StyleSheet.create({
   mainView: {
     backgroundColor: 'white',
-    paddingTop: 50, 
+    paddingTop: 50,
     alignItems: "center",
     justifyContent: "center"
-  }
+  },
+  input: {
+    width: "100%",
+    backgroundColor: "#cecece",
+    marginTop: 20,
+    fontSize: 25,
+    padding: 10
+}
 })
 
 export default App;
