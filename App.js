@@ -7,12 +7,13 @@
  */
 
 import React, { Component } from 'react';
-import { TextInput, Button, View, StyleSheet, Text, ScrollView } from 'react-native';
+import { TextInput, Button, View, StyleSheet, Text, ScrollView, Image } from 'react-native';
 import Header from './src/header'
 import Generator from './src/generator'
 import NumList from './src/numlist'
 import Input from './src/input'
 import Picker from './src/picker'
+import Earphone from './assets/images/earphone.jpg'
 
 
 class App extends Component {
@@ -64,6 +65,10 @@ onChangeInput = (event) => {
     return (
       
       <View style={styles.mainView}>
+        <Image style={styles.image}
+        resizeMode="contain" 
+          source={Earphone}
+          onLoadEnd={()=>alert('Image Loaded')}/>
         {/* <Header name={this.state.appName}/>
         <View>
           <Text style={styles.mainText} onPress={()=>alert('Text touch event')}>
@@ -124,6 +129,10 @@ mainView: {
   padding: 20,
   margin: 20,
   backgroundColor: pink
+},
+image: {
+  width:"100%",
+  height: 700
 }
 })
 
