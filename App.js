@@ -12,6 +12,7 @@ import Header from './src/header'
 import Generator from './src/generator'
 import NumList from './src/numlist'
 import Input from './src/input'
+import Picker from './src/picker'
 
 
 class App extends Component {
@@ -61,6 +62,7 @@ onChangeInput = (event) => {
 
   render() {
     return (
+      
       <View style={styles.mainView}>
         {/* <Header name={this.state.appName}/>
         <View>
@@ -73,6 +75,7 @@ onChangeInput = (event) => {
           <NumList num={this.state.random}
           delete={this.onNumDelete}/>
         </ScrollView> */}
+        <Picker/>
         <TextInput
           value={this.state.myTextInput}
           style={styles.input}
@@ -83,6 +86,15 @@ onChangeInput = (event) => {
           editable={true} />
         <Button title="Add Text Input"
           onPress={this.onAddTextInput} />
+          <ScrollView style={{width: '100%'}}>
+            {
+              this.state.alphabet.map((item, idx) => (
+                <Text style={styles.mainText}>
+                  {item}
+                </Text>
+              ))
+            }
+          </ScrollView>
         <Input />
 
 
@@ -104,6 +116,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 25,
     padding: 10
+},
+mainView: {
+  fontSize: 20,
+  fontWeight: 'normal',
+  color: 'red', 
+  padding: 20,
+  margin: 20,
+  backgroundColor: pink
 }
 })
 
