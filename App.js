@@ -51,7 +51,12 @@ onChangeInput = (event) => {
 }
 
   onAddTextInput = () => {
-    alert('I want to add a textinput')
+    this.setState(prevState =>{
+      return {
+        myTextInput: '',
+        alphabet: [...prevState.alphabet, prevState.myTextInput]
+      }
+    })
   }
 
   render() {
