@@ -14,6 +14,7 @@ import NumList from './src/numlist'
 import Input from './src/input'
 import Picker from './src/picker'
 import Earphone from './assets/images/earphone.jpg'
+import Modal from './src/modal';
 
 
 class App extends Component {
@@ -65,10 +66,11 @@ onChangeInput = (event) => {
     return (
       
       <View style={styles.mainView}>
-        <Image style={styles.image}
+        <Image/>
+        {/* <Image style={styles.image}
         resizeMode="contain" 
           source={Earphone}
-          onLoadEnd={()=>alert('Image Loaded')}/>
+          onLoadEnd={()=>alert('Image Loaded')}/> */}
         {/* <Header name={this.state.appName}/>
         <View>
           <Text style={styles.mainText} onPress={()=>alert('Text touch event')}>
