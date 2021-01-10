@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import React, { Component } from 'react';
 import {View, Text, Button} from 'react-native';
 
-class UserScreen extends Component {
+class DrawerUserScreen extends Component {
 
     headerStyle = () => {
         this.props.navigation.setOptions({
@@ -26,11 +26,6 @@ class UserScreen extends Component {
     }
 
     render() {
-        this.headerStyle();
-        const {params} = this.props.route;
-        const userIdx = params ? params.userIdx : null;
-        const userName = params ? params.userName : null;
-        const userLastName = params ? params.userLastName : null;
         return (
             <View style={{
                 flex: 1,
@@ -43,11 +38,8 @@ class UserScreen extends Component {
                     this.props.navigation.navigate('Home')
                 }}
                 />
-                <Text>User Idx: {JSON.stringify(userIdx)}</Text>
-                <Text>User Name: {JSON.stringify(userName)}</Text>
-                <Text>User LastName: {JSON.stringify(userLastName)}</Text>
             </View>
         )
     }
 }
-export default UserScreen;
+export default DrawerUserScreen;
