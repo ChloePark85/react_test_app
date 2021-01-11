@@ -10,12 +10,13 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, Image, View, Button } from 'react-native';
 import { NavigationContainer} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import HomeScreen from './src/home';
 import UserScreen from './src/user';
 import LogoTitle from './src/logo';
 import DrawerHomeScreen from './src/home_drawer';
 import DrawerUserScreen from './src/user_drawer';
+import { Linking } from 'react-native';
 // import { TextInput, Button, View, StyleSheet, Text, ScrollView, Image } from 'react-native';
 // import Header from './src/header'
 // import Generator from './src/generator'
@@ -28,6 +29,22 @@ import DrawerUserScreen from './src/user_drawer';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
+CustomDrawerContent = (props) => {
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props}/>
+      <DrawerItem
+        label="Help"
+        onPress={()=>Linking.openURL('http://www.google.com')}
+        />
+        <DrawerItem
+        label="Info"
+        onPress={()=>alert('Info Window')}
+        />
+    </DrawerContentScrollView>
+  )
+}
+
 class App extends Component {
 
   // logotitle = () => {
@@ -39,10 +56,24 @@ class App extends Component {
   //   )
   // }
 
+
+
   render() {
     return (
       <NavigationContainer>
-        <Drawer.Navigator>
+        <Drawer.Navigator
+          initialRouteName="Home"
+          drawerType="front"
+          drawerPosition="right"
+          drawerStyle={{
+            backgroundColor: '#c6cbef',
+            width: 200
+          }}
+          drawerContentOptions={{
+            activeTintColor: 'red',
+            activeBackgroundColor: 'skyblue'
+          }}
+          drawerContent={props => <CustomDrawerContent {...props} />}>
           <Drawer.Screen name="Home" component={DrawerHomeScreen}/>
           <Drawer.Screen name="User" component={DrawerUserScreen}/>
         </Drawer.Navigator>
