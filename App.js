@@ -17,6 +17,7 @@ import LogoTitle from './src/logo';
 import DrawerHomeScreen from './src/home_drawer';
 import DrawerUserScreen from './src/user_drawer';
 import { Linking } from 'react-native';
+import SideDrawer from './src/my_drawer';
 // import { TextInput, Button, View, StyleSheet, Text, ScrollView, Image } from 'react-native';
 // import Header from './src/header'
 // import Generator from './src/generator'
@@ -29,21 +30,22 @@ import { Linking } from 'react-native';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-CustomDrawerContent = (props) => {
-  return (
-    <DrawerContentScrollView {...props}>
-      <DrawerItemList {...props}/>
-      <DrawerItem
-        label="Help"
-        onPress={()=>Linking.openURL('http://www.google.com')}
-        />
-        <DrawerItem
-        label="Info"
-        onPress={()=>alert('Info Window')}
-        />
-    </DrawerContentScrollView>
-  )
-}
+// CustomDrawerContent = (props) => {
+//   return (
+//     <DrawerContentScrollView {...props}>
+//       <DrawerItemList {...props}/>
+//       <DrawerItem
+//         label="Help"
+//         onPress={()=>Linking.openURL('http://www.google.com')}
+//         icon={()=><LogoTitle/>}
+//         />
+//         <DrawerItem
+//         label="Info"
+//         onPress={()=>alert('Info Window')}
+//         />
+//     </DrawerContentScrollView>
+//   )
+// }
 
 class App extends Component {
 
